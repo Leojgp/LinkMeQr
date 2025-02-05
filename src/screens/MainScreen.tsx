@@ -21,7 +21,7 @@ const MainScreen = ({navigation}:any) => {
         />
         <MaterialButtonPrimary
           style={styles.registerButton}
-          name={'Sing Up'}
+          name={'Info'}
           nav={navigation}
         />
       </View>

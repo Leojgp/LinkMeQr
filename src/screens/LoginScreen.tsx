@@ -4,13 +4,14 @@ import FormComponent from "../components/FormComponent";
 
 
 interface LoginScreenProps {
-  // Define any props if needed
+  navigation:any
 }
 
-const LoginScreen: FC<LoginScreenProps> = (props) => {
+const LoginScreen: FC<LoginScreenProps> = (props:LoginScreenProps) => {
+const navigation = props.navigation
   return (
     <View style={styles.container}>
-      <FormComponent style={styles.formComponent}></FormComponent>
+      <FormComponent style={styles.formComponent} nav={navigation}></FormComponent>
     </View>
   );
 }

@@ -6,6 +6,7 @@ import MaterialRightIconTextbox from "./MaterialRightIconTextBox";
 
 interface FormComponentProps {
   style?: ViewStyle;
+  nav:any
 }
 
 const FormComponent: React.FC<FormComponentProps> = (props) => {
