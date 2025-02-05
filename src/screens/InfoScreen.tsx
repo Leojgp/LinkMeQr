@@ -10,7 +10,7 @@ export default function InfoScreen() {
     }
   return (
     <View>
-      <Text>{student?.nombre}</Text>
+      <Text>{student?.nombre??'Usuario no encontrado'}</Text>
       <Text>{student?.grado}</Text>
       <Text>{student?.aula}</Text>
       <Text>{student?.ciudad}</Text>

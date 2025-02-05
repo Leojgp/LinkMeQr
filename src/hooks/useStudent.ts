@@ -3,13 +3,13 @@ import { Student } from "../entities/Student";
 import { Fetch } from "../fetch/Fetch";
 
 
-export const useStudents = (name:string) => {
+export const useStudents = (name: string) => {
     const fetch = new Fetch();
-    const [student, setStudents] = useState<Student| null>(null);
+    const [student, setStudents] = useState<Student | null>(null);
 
-    const [loading, setLoading] =useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const loadMovies = async () => {
+    const loadStudent = async () => {
         const student = await fetch.getStudentByName(name);
         if (student != null) {
             console.log(student);
@@ -19,9 +19,9 @@ export const useStudents = (name:string) => {
     }
 
     useEffect(() => {
-      loadMovies();
+        loadStudent();
     }, [])
-    
+
     return {
         student, loading
     }

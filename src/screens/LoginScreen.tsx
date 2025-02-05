@@ -1,20 +1,39 @@
-import React, { Component, FC } from "react";
-import { StyleSheet, View, ViewStyle } from "react-native";
+import React, { FC, useEffect } from "react";
+import { StyleSheet, Text, View, ViewStyle } from "react-native";
 import FormComponent from "../components/FormComponent";
-
+import { useDispatch, useSelector } from "react-redux";
+import { AppStore } from "../redux/store";
+import { createStudent } from "../redux/states/studentSlice";
 
 interface LoginScreenProps {
-  navigation:any
+  navigation: any;  
 }
 
-const LoginScreen: FC<LoginScreenProps> = (props:LoginScreenProps) => {
-const navigation = props.navigation
+const LoginScreen: FC<LoginScreenProps> = ({ navigation }: LoginScreenProps) => {
+  const testStudent = {
+    nombre: "Jesús",
+    grado: "5to",
+    aula: "A1",
+    ciudad: "Madrid",
+    usaBus: true
+  };
+
+  const studentState = useSelector((store: AppStore) => store.student);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(createStudent(testStudent));
+  }, [dispatch]);
+
+  console.log(studentState);
+
   return (
     <View style={styles.container}>
-      <FormComponent style={styles.formComponent} nav={navigation}></FormComponent>
+      <FormComponent style={styles.formComponent} />
+      <Text>{testStudent.nombre}</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
