@@ -1,27 +1,28 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import MaterialButtonPrimary from "../components/MaterialButtonPrimary";
+import { NavigationAction } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 
-interface PaginaInicioProps {
-  // Define any props if needed
-}
 
-const MainPage: React.FC<PaginaInicioProps> = (props) => {
+const MainScreen = ({navigation}:any) => {
   return (
     <View style={styles.container}>
       <Text style={styles.go2Class}>Go2Class</Text>
       <View style={styles.rect}>
         <Text style={styles.loremIpsum}>
-          No más vueltas, ve directo a clase.
+        No more distractions, head straight to class.
         </Text>
         <MaterialButtonPrimary
           style={styles.loginButton}
-          name={'Iniciar Sesión'}
+          name={'Login'}
+          nav={navigation}
         />
         <MaterialButtonPrimary
           style={styles.registerButton}
-          name={'Registrarse'}
+          name={'Sing Up'}
+          nav={navigation}
         />
       </View>
       <Image
@@ -40,11 +41,12 @@ const styles = StyleSheet.create({
   go2Class: {
     fontFamily: "roboto-700",
     color: "#121212",
+    fontWeight: 'bold',
     height: 44,
     width: 163,
     lineHeight: 45,
     fontSize: 34,
-    marginTop: 71,
+    marginTop: 31,
     alignSelf: "center"
   },
   rect: {
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,1)",
     borderRadius: 10,
     marginTop: 51,
-    marginLeft: 32
+    marginLeft: 45,
   },
   registerButton: {
     height: 45,
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: "rgba(255,255,255,1)",
     marginTop: 34,
-    marginLeft: 32
+    marginLeft: 45
   },
   image: {
     height: 200,
@@ -90,5 +92,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MainPage;
+export default MainScreen;
 

@@ -4,16 +4,17 @@ import { StyleSheet, TouchableOpacity, Text, ViewStyle, TextStyle } from "react-
 interface MaterialButtonPrimaryProps {
   style?: ViewStyle;
   name:string;
+  nav?:any;
 }
 
 const MaterialButtonPrimary: React.FC<MaterialButtonPrimaryProps> = (props) => {
-    console.log({props})
     const name  = props.name;
+    const navigation = props.nav;
     
   return (
     <TouchableOpacity style={[styles.container, props.style]}
     onPress={()=>{
-        console.log('Button pressed')
+        navigation.navigate({name})
     }}>
       <Text style={styles.caption}>{name}</Text>
     </TouchableOpacity>
