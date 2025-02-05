@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import ServerService from './services/ServerService';
-import { signupStudentController, getStudentsController, getStudentByNameController } from './controllers/StudentController';
+
+import { signupStudentController, getStudentsController, getStudentsByNameController } from './controllers/StudentController';
 
 const app = express();
 const port = 3000;
@@ -10,12 +10,13 @@ const port = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-const serverService = ServerService.getInstance();
-
-app.post('/signup', signupStudentController);
+app.post('/signupStudent', signupStudentController);
 app.get('/students', getStudentsController);
-app.get('/students/:name', getStudentByNameController);
+app.get('/students/:nombre', getStudentsByNameController);
+app.post('signupTeacher',);
+app.get('teachers');
+app.get('teachers/:nombre');
 
 app.listen(port, () => {
-  console.log(`Servidor escuchando en el puerto ${port}`);
+  console.log(`Server listening on port ${port}`);
 });

@@ -23,16 +23,16 @@ export const getStudentsController = (req: Request, res: Response): void => {
   }
 };
 
-export const getStudentByNameController = (req: Request, res: Response): void => {
+export const getStudentsByNameController = (req: Request, res: Response) => {
   const { nombre } = req.params;
-  try {
-    const estudiante = serverService.getStudentById(nombre);
-    if (estudiante) {
-      res.status(200).json(estudiante);
-    } else {
-      res.status(404).json({ mensaje: 'Estudiante no encontrado' });
-    }
-  } catch (error) {
-    res.status(500).json({ mensaje: 'Error al obtener al estudiante'});
+  console.log("Buscando estudiante con nombre:", nombre); 
+
+  const estudiante = ServerService.getInstance().getStudentById(nombre);
+
+  if (estudiante) {
+    res.status(200).json(estudiante);
+  } else {
+    res.status(404).json({ mensaje: 'Estudiante no encontrado' });
   }
 };
+

@@ -22,8 +22,14 @@ class ServerService {
   }
 
   public getStudentById(name: string): Student | undefined {
-    return ServerService.students.find(est => est.nombre === name);
+    for (let i = 0; i < ServerService.students.length; i++) {
+      if (ServerService.students[i].nombre === name) {
+        return ServerService.students[i];
+      }
+    }
+    return undefined; 
   }
+  
 }
 
 export default ServerService;
