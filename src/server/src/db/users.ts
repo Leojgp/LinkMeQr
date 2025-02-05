@@ -13,7 +13,7 @@ const AlumnoSchema = new Schema({
 
 const ProfesorSchema = new Schema({
     nombre: { type: String, required: true },
-    asignaturas: [{ type: String, required: true  }], 
+    asignatura: { type: String, required: true  }, 
     
 });
 

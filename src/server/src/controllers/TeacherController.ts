@@ -7,7 +7,7 @@ export const signupTeacherController = async (req: Request, res: Response): Prom
 
   try {
     const serverService = await ServerService.getInstance(); 
-    await serverService.signUpTeacher({ nombre, asignatura });
+    await serverService.signUpTeacher({ nombre, asignatura});
     res.status(201).json({ mensaje: 'Profesor registrado con éxito' });
   } catch (error) {
     console.error(error);
@@ -28,7 +28,6 @@ export const getTeachersController = async (req: Request, res: Response): Promis
 
 export const getTeachersByNameController = async (req: Request, res: Response): Promise<void> => {
   const { nombre } = req.params;
-  console.log("Buscando profesor con nombre:", nombre);
 
   try {
     const serverService = await ServerService.getInstance(); 
