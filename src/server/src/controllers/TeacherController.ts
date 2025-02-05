@@ -2,37 +2,45 @@ import { Request, Response } from 'express';
 import ServerService from '../services/ServerService';
 import { Teacher } from '../entities/Teacher';
 
-const serverService = ServerService.getInstance();
+export const signupTeacherController = async (req: Request, res: Response): Promise<void> => {
+  const { nombre, asignatura }: Teacher = req.body;
 
-export const signupTeacherController = (req: Request, res: Response): void => {
-  const { nombre, asignatura  }: Teacher = req.body;
   try {
-    serverService.signUpTeacher({ nombre, asignatura});
+    const serverService = await ServerService.getInstance(); 
+    await serverService.signUpTeacher({ nombre, asignatura });
     res.status(201).json({ mensaje: 'Profesor registrado con éxito' });
   } catch (error) {
-    res.status(500).json({ mensaje: 'Error al registrar al profesor'});
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al registrar al profesor' });
   }
 };
 
-export const getTeachersController = (req: Request, res: Response): void => {
+export const getTeachersController = async (req: Request, res: Response): Promise<void> => {
   try {
-    const teachers = serverService.getTeachers();
+    const serverService = await ServerService.getInstance(); 
+    const teachers = await serverService.getTeachers();
     res.status(200).json(teachers);
   } catch (error) {
-    res.status(500).json({ mensaje: 'Error al obtener los profesores'});
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al obtener los profesores' });
   }
 };
 
-export const getTeachersByNameController = (req: Request, res: Response) => {
+export const getTeachersByNameController = async (req: Request, res: Response): Promise<void> => {
   const { nombre } = req.params;
-  console.log("Buscando profesores con nombre:", nombre); 
+  console.log("Buscando profesor con nombre:", nombre);
 
-  const estudiante = ServerService.getInstance().getTeacherById(nombre);
+  try {
+    const serverService = await ServerService.getInstance(); 
+    const teacher = await serverService.getTeacherById(nombre);
 
-  if (estudiante) {
-    res.status(200).json(estudiante);
-  } else {
-    res.status(404).json({ mensaje: 'Profesor no encontrado' });
+    if (teacher) {
+      res.status(200).json(teacher);
+    } else {
+      res.status(404).json({ mensaje: 'Profesor no encontrado' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al obtener al profesor', error: Error});
   }
 };
-
