@@ -1,7 +1,9 @@
 import { Student } from '../entities/Student';
+import { Teacher } from '../entities/Teacher';
 
 class ServerService {
   private static students: Student[] = [];
+  private static teachers: Teacher[] = [];
   private static instance: ServerService;
 
   private constructor() {}
@@ -30,6 +32,24 @@ class ServerService {
     return undefined; 
   }
   
+
+public signUpTeacher(teacher: Teacher): void {
+  ServerService.teachers.push(teacher);
+}
+
+public getTeachers(): Teacher[] {
+  return ServerService.teachers;
+}
+
+public getTeacherById(name: string): Teacher | undefined {
+  for (let i = 0; i < ServerService.teachers.length; i++) {
+    if (ServerService.teachers[i].nombre === name) {
+      return ServerService.teachers[i];
+    }
+  }
+  return undefined; 
+}
+
 }
 
 export default ServerService;

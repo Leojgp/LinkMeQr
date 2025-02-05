@@ -1,15 +1,12 @@
 async function recogerDatos() {
     const students = 
         {
-            nombre: "Pepe",
-            grado: "2DAM",
-            aula: "211",
-            ciudad: "Otura",
-            usaBus: false,
+            nombre: "Jesús",
+            asignatura:"Acceso a datos",
         };
 
     try {
-        const response = await fetch('http://localhost:3000/signup', {
+        const response = await fetch('http://localhost:3000/signupTeacher', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -24,7 +21,7 @@ async function recogerDatos() {
         const data = await response.json();
         console.log("Usuarios registrados correctamente:", data);
     } catch (error) {
-        console.error("Error al registrar estudiantes:", error);
+        console.error("Error al registrar profesor:", error);
     }
 }
 
