@@ -1,18 +1,31 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
-interface PropsType{
-    navigation:any
+interface PropsType {
+    navigation: any
 }
-export default function HomeScreen({navigation}:PropsType) {
-  return (
-    <View>
-      <Text>HomeScreen</Text>
-      <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('QrCode')}>
-              <Text style={styles.buttonText}>Mostrar código QR</Text>
+export default function HomeScreen({ navigation }: PropsType) {
+    const studentData = useSelector((state: RootState) => state.student);
+    const handleDeepLink = () => {
+        const studentUser = studentData.user;
+        const link = `myapp://student/${studentUser}`;
+
+        Linking.openURL(link)
+            .catch(err => console.error('Error al intentar abrir el enlace profundo:', err));
+    };
+    return (
+        <View>
+            <Text>HomeScreen</Text>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('QrCode')}>
+                <Text style={styles.buttonText}>Mostrar código QR</Text>
             </TouchableOpacity>
-    </View>
-  )
+            <TouchableOpacity style={styles.button} onPress={handleDeepLink}>
+                <Text style={styles.buttonText}>Ir a la Info del Estudiante</Text>
+            </TouchableOpacity>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -22,9 +35,9 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         marginTop: 20,
-      },
-      buttonText: {
+    },
+    buttonText: {
         color: '#fff',
         fontSize: 16,
-      },
+    },
 })

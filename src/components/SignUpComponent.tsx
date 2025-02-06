@@ -30,10 +30,10 @@ export default function SignUpComponent({navigation}:PropsType) {
       if(response != null){
         console.log('Estudiante registrado con éxito');
       }
-      console.log('Registro exitoso');
+      Alert.alert('Registro exitoso','El usuario ha sido registrado en la base de datos');
       navigation.navigate('Login')
     } catch (error: any) {
-      console.log('Error', error.message || 'Error al registrar el estudiante');
+        Alert.alert('Error', error.message || 'Error al registrar el estudiante');
     }
   };
   return (

@@ -3,9 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { useStudents } from '../hooks/useStudent';
 
-type InfoScreenRouteProp = {
-  id: string;
-};
 
 export default function InfoScreen() {
   const route = useRoute<any>();
@@ -18,10 +15,12 @@ export default function InfoScreen() {
 
   return (
     <View>
-      <Text>{student?.nombre ?? 'Usuario no encontrado'}</Text>
-      <Text>{student?.grado}</Text>
-      <Text>{student?.aula}</Text>
-      <Text>{student?.ciudad}</Text>
+      <Text>Usuario: {student?.user}</Text>
+      <Text>Nombre: {student?.nombre}</Text>
+      <Text>Grado: {student?.grado}</Text>
+      <Text>Aula: {student?.aula}</Text>
+      <Text>Ciudad: {student?.ciudad}</Text>
+      <Text>Ordenador: {student?.ordenador}</Text>
       <Text>{student?.usaBus ? 'Usa bus' : 'No usa bus'}</Text>
     </View>
   );

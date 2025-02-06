@@ -21,7 +21,6 @@ export default function LoginComponent({navigation}:PropsType) {
       
       if (studentData && studentData.password === password) {
         dispatch(createStudent(studentData)); 
-        Alert.alert('Login exitoso', 'Bienvenido de nuevo');
         navigation.navigate('Home');
       } else {
         Alert.alert('Error', 'Usuario o contraseña incorrectos');
