@@ -3,8 +3,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, Alert } from 'reac
 import { useDispatch } from 'react-redux';
 import { createStudent } from '../redux/states/studentSlice';
 import { Fetch } from '../fetch/Fetch';
-import { RootState } from '../redux/store';
-import { useSelector } from 'react-redux';
+
 
 interface PropsType{
   navigation: any
@@ -49,7 +48,7 @@ export default function LoginComponent({navigation}:PropsType) {
       />
 
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Iniciar sesión</Text>
+        <Text style={styles.buttonText}>Iniciar Sesión</Text>
       </TouchableOpacity>
     </View>
   );

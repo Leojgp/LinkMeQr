@@ -11,7 +11,7 @@ const HomeScreen: FC<HomeScreenProps> = ({ navigation }: HomeScreenProps) => {
   const studentData = useSelector((state: RootState) => state.student);
 
   const handleProfilePress = () => {
-    navigation.navigate("Info");
+    Alert.alert('Perfil','Escanee un código QR para poder ver los datos del usuario');
   };
 
   const handleCameraPress = () => {

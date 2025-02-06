@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import QRCode from 'react-native-qrcode-svg';
-import { useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 
 export default function QrCodeScreen() {

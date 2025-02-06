@@ -47,7 +47,6 @@ export default function SignUpComponent({ navigation }: PropsType) {
   return (
     <View style={styles.container}>
       <Text style={styles.bienvenidoDeVuelta}>Registrese para empezar</Text>
-
       <TextInput
         style={styles.input}
         placeholder="Nombre de usuario"

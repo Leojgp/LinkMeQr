@@ -23,5 +23,5 @@ export const studentSlice = createSlice({
   },
 });
 
-export const {createStudent,modifyStudent} = studentSlice.actions;
+export const {createStudent,modifyStudent,resetStudent} = studentSlice.actions;
 export default studentSlice.reducer;
