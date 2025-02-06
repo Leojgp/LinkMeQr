@@ -16,11 +16,11 @@ app.use(bodyParser.json());
 connectDB().then(() => {
   app.post('/signupStudent', signupStudentController);
   app.get('/students', getStudentsController);
-  app.get('/students/:nombre', getStudentsByNameController);
+  app.get('/students/:user', getStudentsByNameController);
 
   app.post('/signupTeacher', signupTeacherController);
   app.get('/teachers', getTeachersController);
-  app.get('/teachers/:nombre', getTeachersByNameController);
+  app.get('/teachers/:user', getTeachersByNameController);
 
   app.listen(port, () => {
     console.log(`Server listening on port ${port}`);

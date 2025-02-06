@@ -15,6 +15,7 @@ export const useStudents = (name: string) => {
             console.log(student);
             setStudents(student);
             setLoading(true);
+            
         }
     }
 

@@ -33,9 +33,9 @@ class ServerService {
     }
   }
 
-  async getStudentById(nombre: string) {
+  async getStudentById(user: string) {
     try {
-      return await Alumno.findOne({ nombre });
+      return await Alumno.findOne({ user });
     } catch (error:any) {
       throw new Error("Error al obtener el estudiante: ");
     }

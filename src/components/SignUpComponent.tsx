@@ -4,7 +4,11 @@ import { createStudent } from '../redux/states/studentSlice';
 import { Fetch } from '../fetch/Fetch';
 import { RootState } from '../redux/store';
 
-export default function SignUpComponent() {
+interface PropsType{
+    navigation: any
+}
+
+export default function SignUpComponent({navigation}:PropsType) {
   const dispatch = useDispatch();
   const fetch = new Fetch();
   const studentData = useSelector((state: RootState) => state.student);
@@ -27,6 +31,7 @@ export default function SignUpComponent() {
         console.log('Estudiante registrado con éxito');
       }
       console.log('Registro exitoso');
+      navigation.navigate('Login')
     } catch (error: any) {
       console.log('Error', error.message || 'Error al registrar el estudiante');
     }

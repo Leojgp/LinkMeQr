@@ -2,11 +2,15 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import SignUpComponent from '../components/SignUpComponent'
 
-export default function SingupScreen() {
+interface PropsType{
+    navigation: any
+}
+
+export default function SingupScreen({navigation}:PropsType) {
   return (
     <View>
       <Text>SingupScreen</Text>
-      <SignUpComponent/>
+      <SignUpComponent navigation={navigation}/>
     </View>
   )
 }
