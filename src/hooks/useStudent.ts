@@ -10,7 +10,7 @@ export const useStudents = (name: string) => {
     const [loading, setLoading] = useState(false);
 
     const loadStudent = async () => {
-        const student = await fetch.getStudentByName(name);
+        const student = await fetch.getStudentByUser(name);
         if (student != null) {
             console.log(student);
             setStudents(student);

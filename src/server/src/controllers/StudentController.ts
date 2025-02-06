@@ -4,11 +4,11 @@ import { Student } from '../entities/Student';
 
 
 export const signupStudentController = async (req: Request, res: Response): Promise<void> => {
-  const { user, password, nombre, grado, aula, ciudad ,usaBus }: Student = req.body;
+  const { user, password, nombre, grado, aula, ciudad ,usaBus, ordenador }: Student = req.body;
 
   try {
     const serverService = await ServerService.getInstance(); 
-    await serverService.signUpStudent({ user, password, nombre, grado, aula, ciudad, usaBus });
+    await serverService.signUpStudent({ user, password, nombre, grado, aula, ciudad, usaBus, ordenador});
     res.status(201).json({ mensaje: 'Estudiante registrado con éxito' });
   } catch (error:any) {
     if (error.code === 11000) { 

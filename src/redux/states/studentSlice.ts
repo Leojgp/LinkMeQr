@@ -8,7 +8,7 @@ export const StudentEmptyState: Student = {
     grado: '',
     aula: '',
     ciudad:'',
-    oredenador: 0,
+    ordenador: 0,
     usaBus: false,
 
 }

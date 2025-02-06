@@ -1,15 +1,15 @@
 import { Student } from "../entities/Student";
 
 export class Fetch{
-  async getStudentByName(name:string):Promise<Student>{
-    const data = await fetch(`http:192.168.1.140:3000/students/${name}`)
+  async getStudentByUser(user:string):Promise<Student>{
+    const data = await fetch(`http:192.168.1.140:3000/students/${user}`)
     const student = await data.json();
     console.log(student)
     return student;
   }
   async signupStudent(studentData: any): Promise<any> {
     try {
-      const response = await fetch('http://192.168.1.140/signupStudent', {
+      const response = await fetch('http://192.168.1.140:3000/signupStudent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,4 +27,13 @@ export class Fetch{
       throw error;
     }
   }
+  async getStudents(studentData: any): Promise<any> {
+    try {
+      const response = await fetch('http://192.168.1.140:3000/students');
+      const students = await response.json();
+      console.log(students);
+  }catch (error) {
+    throw error;
+  }
+}
 }
