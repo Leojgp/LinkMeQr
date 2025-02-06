@@ -9,12 +9,14 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { Linking } from 'react-native';
 import QrCodeScreen from './screens/QrCodeScreen';
+import SingupScreen from './screens/SingupScreen';
 
 type RootStackParamList = {
   Home: undefined;
   Login: undefined;
   Info: { id: string };
-  QrCode: undefined 
+  QrCode: undefined;
+  SignUp: undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -26,7 +28,8 @@ const linking = {
       Home: 'home',
       Login: 'login',
       Info: 'student/:id', 
-      QrCode: 'qrCode' 
+      QrCode: 'qrCode',
+      SignUp: 'signup',
     },
   },
 };
@@ -52,6 +55,7 @@ export default function App() {
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Info" component={InfoScreen} />
           <Stack.Screen name="QrCode" component={QrCodeScreen} />
+          <Stack.Screen name="SignUp" component={SingupScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

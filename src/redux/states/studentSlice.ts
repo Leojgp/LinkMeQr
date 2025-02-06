@@ -2,10 +2,13 @@ import { CaseReducer, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Student } from "../../entities/Student"
 
 export const StudentEmptyState: Student = {
+    user: '',
+    password: '',
     nombre: '',
     grado: '',
     aula: '',
     ciudad:'',
+    oredenador: 0,
     usaBus: false,
 
 }

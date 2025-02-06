@@ -1,4 +1,6 @@
 export interface Teacher {
-    nombre: string;
-    asignatura: string;
-  }
+  user: String,
+  password: String,
+  nombre: string;
+  asignatura: string;
+}

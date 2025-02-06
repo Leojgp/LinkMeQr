@@ -26,7 +26,7 @@ const MainScreen = ({navigation}:any) => {
         />
         <MaterialButtonPrimary
           style={styles.registerButton}
-          name={'QrCode'}
+          name={'SignUp'}
           nav={navigation}
         />
       </View>

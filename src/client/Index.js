@@ -1,13 +1,17 @@
 async function recogerDatos() {
     const students = {
-         "user": "Leojgp",
-         "password":"Leojgp",
-        "nombre": "Jesús",
-        "asignatura":"Acceso a datos"        
+         "user": "AlbertoGamer",
+         "password":"12345",
+        "nombre": "Roberto",
+        "grado": "2DAM",
+        "aula": "211",
+        "oredenador":16,
+        "ciudad": "Otura",
+        "usaBus": false    
     };
 
     try {
-        const response = await fetch('http://localhost:3000/signupTeacher', {  
+        const response = await fetch('http://localhost:3000/signupStudent', {  
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
