@@ -3,8 +3,6 @@ import { StyleSheet, View, Text, Image, Button, Linking } from "react-native";
 import MaterialButtonPrimary from "../components/MaterialButtonPrimary";
 
 
-
-
 const MainScreen = ({navigation}:any) => {
   const handleDeepLink = () => {
     const studentName = "Pitres";  

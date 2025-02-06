@@ -2,17 +2,22 @@ import { Request, Response } from 'express';
 import ServerService from '../services/ServerService';
 import { Student } from '../entities/Student';
 
+
 export const signupStudentController = async (req: Request, res: Response): Promise<void> => {
-  const { nombre, grado, aula, ciudad ,usaBus }: Student = req.body;
+  const { user, password, nombre, grado, aula, ciudad ,usaBus }: Student = req.body;
 
   try {
     const serverService = await ServerService.getInstance(); 
-    await serverService.signUpStudent({ nombre, grado, aula, ciudad, usaBus });
+    await serverService.signUpStudent({ user, password, nombre, grado, aula, ciudad, usaBus });
     res.status(201).json({ mensaje: 'Estudiante registrado con éxito' });
-  } catch (error) {
+  } catch (error:any) {
+    if (error.code === 11000) { 
+     res.status(400).json({ message: 'El nombre de usuario ya está en uso' });
+    }
     console.error(error);
     res.status(500).json({ mensaje: 'Error al registrar al estudiante' });
   }
+  
 };
 
 export const getStudentsController = async (req: Request, res: Response): Promise<void> => {
@@ -27,12 +32,12 @@ export const getStudentsController = async (req: Request, res: Response): Promis
 };
 
 export const getStudentsByNameController = async (req: Request, res: Response): Promise<void> => {
-  const { nombre } = req.params;
-  console.log("Buscando estudiante con nombre:", nombre);
+  const { user } = req.params;
+  console.log("Buscando estudiante con nombre de usuario:", user);
 
   try {
     const serverService = await ServerService.getInstance(); 
-    const estudiante = await serverService.getStudentById(nombre);
+    const estudiante = await serverService.getStudentById(user);
 
     if (estudiante) {
       res.status(200).json(estudiante);

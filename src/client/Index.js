@@ -1,5 +1,7 @@
 async function recogerDatos() {
     const students = {
+         "user": "Leojgp",
+         "password":"Leojgp",
         "nombre": "Jesús",
         "asignatura":"Acceso a datos"        
     };
