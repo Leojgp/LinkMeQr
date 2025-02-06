@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, Button, Linking } from "react-native";
 import MaterialButtonPrimary from "../components/MaterialButtonPrimary";
-import { NavigationAction } from "@react-navigation/native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+
 
 
 
 const MainScreen = ({navigation}:any) => {
+  const handleDeepLink = () => {
+    const studentName = "Pitres";  
+    const link = `myapp://student/${studentName}`;
+    
+    Linking.openURL(link)
+      .catch(err => console.error('Error al intentar abrir el enlace profundo:', err));
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.go2Class}>Go2Class</Text>
@@ -14,6 +20,7 @@ const MainScreen = ({navigation}:any) => {
         <Text style={styles.loremIpsum}>
         No more distractions, head straight to class.
         </Text>
+        <Button title="Ir a la Info del Estudiante" onPress={handleDeepLink} />
         <MaterialButtonPrimary
           style={styles.loginButton}
           name={'Login'}
@@ -21,7 +28,7 @@ const MainScreen = ({navigation}:any) => {
         />
         <MaterialButtonPrimary
           style={styles.registerButton}
-          name={'Info'}
+          name={'QrCode'}
           nav={navigation}
         />
       </View>

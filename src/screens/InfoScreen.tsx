@@ -1,33 +1,30 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { useStudents } from '../hooks/useStudent'
-import QRCode from 'react-native-qrcode-svg';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { useStudents } from '../hooks/useStudent';
 
+type InfoScreenRouteProp = {
+  id: string;
+};
 
 export default function InfoScreen() {
-    const { student, loading } = useStudents('Pitres');
-    if (loading===false) {
-        return <Text>Loading...</Text>;
-    }
-    const studentInfo = JSON.stringify({
-        nombre: student?.nombre ?? 'Usuario no encontrado',
-        grado: student?.grado,
-        aula: student?.aula,
-        ciudad: student?.ciudad,
-        usaBus: student?.usaBus,
-      });   
+  const route = useRoute<any>();
+  const { id } = route.params; 
+  const { student, loading } = useStudents(id); 
+
+  if (loading === false) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <View>
-      <Text>{student?.nombre??'Usuario no encontrado'}</Text>
+      <Text>{student?.nombre ?? 'Usuario no encontrado'}</Text>
       <Text>{student?.grado}</Text>
       <Text>{student?.aula}</Text>
       <Text>{student?.ciudad}</Text>
-      <Text>{student?.usaBus}</Text>
-      <QRCode
-      value={studentInfo} 
-    />
+      <Text>{student?.usaBus ? 'Usa bus' : 'No usa bus'}</Text>
     </View>
-  )
+  );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
