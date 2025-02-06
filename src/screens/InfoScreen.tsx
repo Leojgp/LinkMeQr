@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { useRoute } from '@react-navigation/native';
 import { useStudents } from '../hooks/useStudent';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 
 export default function InfoScreen() {
-  const route = useRoute<any>();
-  const { id } = route.params; 
-  const { student, loading } = useStudents(id); 
-
+  const studentData = useSelector((state: RootState) => state.student); 
+  const {student, loading} = useStudents(studentData.user);
   if (loading === false) {
     return <Text>Loading...</Text>;
   }

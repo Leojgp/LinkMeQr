@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Image, Button, Linking } from "react-native";
 import MaterialButtonPrimary from "../components/MaterialButtonPrimary";
 
-
-const MainScreen = ({navigation}:any) => {
+interface PropsType{
+  navigation: any
+}
+const MainScreen = ({navigation}:PropsType) => {
   return (
     <View style={styles.container}>
       <Text style={styles.go2Class}>Go2Class</Text>
@@ -48,9 +50,9 @@ const styles = StyleSheet.create({
   },
   rect: {
     width: 560,
-    height: 504,
+    height: 524,
     backgroundColor: "rgba(74,144,226,1)",
-    marginTop: 221,
+    marginTop: 251,
     justifyContent: 'center'
   },
   loremIpsum: {
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
   image: {
     height: 200,
     width: 200,
-    marginTop: -706,
+    marginTop: -736,
     alignSelf: "center"
   }
 });
