@@ -9,7 +9,6 @@ interface PropsType{
 export default function SingupScreen({navigation}:PropsType) {
   return (
     <View>
-      <Text>SingupScreen</Text>
       <SignUpComponent navigation={navigation}/>
     </View>
   )

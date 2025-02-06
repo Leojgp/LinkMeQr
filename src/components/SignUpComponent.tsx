@@ -3,86 +3,103 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'reac
 import { createStudent } from '../redux/states/studentSlice';
 import { Fetch } from '../fetch/Fetch';
 import { RootState } from '../redux/store';
+import { useState } from 'react';
 
-interface PropsType{
-    navigation: any
+interface PropsType {
+  navigation: any;
 }
 
-export default function SignUpComponent({navigation}:PropsType) {
+export default function SignUpComponent({ navigation }: PropsType) {
+  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
+  const [grade, setGrade] = useState('');
+  const [classRoom, setClass] = useState('');
+  const [city, setCity] = useState('');
+  const [password, setPassword] = useState('');
+  const [computer, setComputer] = useState('');  
+  const [bus, setBus] = useState('');  
   const dispatch = useDispatch();
   const fetch = new Fetch();
-  const studentData = useSelector((state: RootState) => state.student);
-  console.log('Estado actual:', studentData);
-
-  const handleInputChange = (field: string, value: string) => {
-    let updatedValue:string| boolean = value;
   
-    if (field === 'usaBus') {
-      updatedValue = value === 'Sí' ? true : false;
-    }
-  
-    dispatch(createStudent({ ...studentData, [field]: updatedValue }));
-  };
   const handleRegister = async () => {
+    const newStudentData = {
+      user: username,
+      password,
+      nombre: name,
+      grado: grade,
+      aula: classRoom,
+      ciudad: city,
+      usaBus: bus === 'Si' ? true : false,  
+      ordenador: computer, 
+    };
+    dispatch(createStudent(newStudentData));
     try {
-      console.log('Datos a enviar:', studentData); 
-      const response = await fetch.signupStudent(studentData);
-      if(response != null){
-        console.log('Estudiante registrado con éxito');
+      const response = await fetch.signupStudent(newStudentData);
+      if (response != null) {
+        Alert.alert('Registro exitoso', 'El usuario ha sido registrado en la base de datos');
+        navigation.navigate('Login');
       }
-      Alert.alert('Registro exitoso','El usuario ha sido registrado en la base de datos');
-      navigation.navigate('Login')
     } catch (error: any) {
-        Alert.alert('Error', error.message || 'Error al registrar el estudiante');
+      Alert.alert('Error', error.message || 'Error al registrar el estudiante');
     }
   };
+
   return (
     <View style={styles.container}>
+      <Text style={styles.bienvenidoDeVuelta}>Registrese para empezar</Text>
+
       <TextInput
         style={styles.input}
         placeholder="Nombre de usuario"
-        value={studentData.user}
-        onChangeText={(text) => handleInputChange('user', text)}
+        value={username}
+        onChangeText={setUsername}
       />
       <TextInput
         style={styles.input}
         placeholder="Contraseña"
         secureTextEntry
-        value={studentData.password}
-        onChangeText={(text) => handleInputChange('password', text)}
+        value={password}
+        onChangeText={setPassword}
       />
       <TextInput
         style={styles.input}
         placeholder="Nombre completo"
-        value={studentData.nombre}
-        onChangeText={(text) => handleInputChange('nombre', text)}
+        value={name}
+        onChangeText={setName}
       />
       <TextInput
         style={styles.input}
         placeholder="Grado"
-        value={studentData.grado}
-        onChangeText={(text) => handleInputChange('grado', text)}
+        value={grade}
+        onChangeText={setGrade}
       />
       <TextInput
         style={styles.input}
         placeholder="Aula"
-        value={studentData.aula}
-        onChangeText={(text) => handleInputChange('aula', text)}
+        value={classRoom}
+        onChangeText={setClass}
       />
       <TextInput
         style={styles.input}
         placeholder="Ciudad"
-        value={studentData.ciudad}
-        onChangeText={(text) => handleInputChange('ciudad', text)}
+        value={city}
+        onChangeText={setCity}
       />
       <TextInput
         style={styles.input}
         placeholder="Ordenador"
-        value={studentData.usaBus ? 'Sí' : 'No'}
-        onChangeText={(text) => handleInputChange('usaBus', text)}
+        keyboardType='numeric'
+        value={computer}
+        onChangeText={(text)=> setComputer(text)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Bus (Si/No)"
+        value={bus}
+        onChangeText={setBus}
       />
       <TouchableOpacity style={styles.button} onPress={handleRegister}>
-        <Text style={styles.buttonText}>Registrar</Text>
+      <Text style={styles.buttonText}>Registrar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -94,10 +111,17 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    marginTop: 40,
+    marginTop: 10,
+  },
+  bienvenidoDeVuelta: {
+    fontFamily: 'roboto-700',
+    color: '#121212',
+    height: 58,
+    fontSize: 30,
+    marginLeft: 6,
   },
   input: {
-    height: 40,
+    height: 50,
     borderColor: '#ccc',
     borderWidth: 1,
     marginBottom: 15,
@@ -106,8 +130,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   button: {
-    backgroundColor: '#4CAF50',
-    padding: 15,
+    backgroundColor: 'rgba(74,144,226,1)',
+    padding: 25,
     borderRadius: 5,
     alignItems: 'center',
     marginTop: 20,

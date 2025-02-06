@@ -30,7 +30,7 @@ export default function HomeScreen({ navigation }: PropsType) {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#4CAF50',
+        backgroundColor: 'rgba(74,144,226,1)',
         padding: 15,
         borderRadius: 5,
         alignItems: 'center',
