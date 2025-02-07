@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { createStudent } from '../redux/states/studentSlice';
 import { Fetch } from '../fetch/Fetch';
-import { RootState } from '../redux/store';
 import { useState } from 'react';
 
 interface PropsType {
@@ -40,7 +39,7 @@ export default function SignUpComponent({ navigation }: PropsType) {
         navigation.navigate('Login');
       }
     } catch (error: any) {
-      Alert.alert('Error', error.message || 'Error al registrar el estudiante');
+      Alert.alert('Error', 'Error al registrar el estudiante');
     }
   };
 

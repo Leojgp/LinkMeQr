@@ -5,18 +5,18 @@ interface MaterialButtonPrimaryProps {
   style?: ViewStyle;
   name:string;
   nav?:any;
+  textStyle?:TextStyle;
 }
 
-const MaterialButtonPrimary: React.FC<MaterialButtonPrimaryProps> = (props) => {
-    const name  = props.name;
-    const navigation = props.nav;
+const MaterialButtonPrimary: React.FC<MaterialButtonPrimaryProps> = ({name,style,nav,textStyle}) => {
+
     
   return (
-    <TouchableOpacity style={[styles.container, props.style]}
+    <TouchableOpacity style={[styles.container, style]}
     onPress={()=>{
-        navigation.navigate({name})
+        nav.navigate({name})
     }}>
-      <Text style={styles.caption}>{name}</Text>
+      <Text style={textStyle}>{name}</Text>
     </TouchableOpacity>
   );
 }

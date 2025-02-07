@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { useStudents } from '../hooks/useStudent';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
 import { useRoute } from '@react-navigation/native';
 
 interface RouteParams {

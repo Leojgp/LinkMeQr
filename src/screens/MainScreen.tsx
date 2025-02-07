@@ -8,20 +8,22 @@ interface PropsType{
 const MainScreen = ({navigation}:PropsType) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.go2Class}>Go2Class</Text>
+      <Text style={styles.go2Class}>LinkMeQR</Text>
       <View style={styles.rect}>
         <Text style={styles.loremIpsum}>
-        No more distractions, head straight to class.
+        Escanea y descubre quién está detrás del código.
         </Text>
         <MaterialButtonPrimary
           style={styles.loginButton}
           name={'Login'}
           nav={navigation}
+          textStyle={styles.textLogin}
         />
         <MaterialButtonPrimary
           style={styles.registerButton}
           name={'SignUp'}
           nav={navigation}
+          textStyle={styles.textSignup}
         />
       </View>
       <Image
@@ -38,6 +40,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   go2Class: {
+    textAlign: 'center',
     fontFamily: "roboto-700",
     color: "#121212",
     fontWeight: 'bold',
@@ -88,6 +91,14 @@ const styles = StyleSheet.create({
     width: 200,
     marginTop: -736,
     alignSelf: "center"
+  },
+  textLogin: {
+    color: "rgba(74,144,226,1)",
+    fontSize: 14
+  },
+  textSignup: {
+    color: "#fff",
+    fontSize: 14
   }
 });
 
