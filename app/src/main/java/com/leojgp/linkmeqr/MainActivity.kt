@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.leojgp.linkmeqr.core.navigation.NavigationWrapper
 import com.leojgp.linkmeqr.ui.theme.LinkMeQrTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +20,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LinkMeQrTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Welcome to LinkMeQr",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                NavigationWrapper()
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LinkMeQrTheme {
-        Greeting("Android")
-    }
-}
