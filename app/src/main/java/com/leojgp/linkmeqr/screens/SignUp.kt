@@ -1,4 +1,4 @@
-package com.leojgp.linkmeqr
+package com.leojgp.linkmeqr.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
