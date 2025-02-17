@@ -1,17 +1,23 @@
-package com.leojgp.linkmeqr
+package com.leojgp.linkmeqr.uiview.view
 
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import com.leojgp.linkmeqr.core.navigation.NavigationWrapper
-import com.leojgp.linkmeqr.Fetch.RetrofitServiceFactory
+import com.leojgp.linkmeqr.uiview.view.navigation.NavigationWrapper
+import com.leojgp.linkmeqr.model.Retrofit.RetrofitServiceFactory
 import com.leojgp.linkmeqr.ui.theme.LinkMeQrTheme
+import com.leojgp.linkmeqr.uiview.viewmodel.StudentViewModel
 import kotlinx.coroutines.launch
+import com.leojgp.linkmeqr.model.entities.Student
 
 class MainActivity : ComponentActivity() {
+
+    private val studentViewModel: StudentViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,16 +27,19 @@ class MainActivity : ComponentActivity() {
                 val students = service.listStudents("Fran01")
                 // Voy a mostrar por el log para ver si se han recogido correctamente los datos
                 Log.d("Recoger Datos Estudiante: ", students.toString())
-                println("Todo ha salido bien")
+                Log.i("Correcto","Todo ha salido bien")
             } catch (e: Exception) {
                 e.printStackTrace()
                 println("Ha ocurrido un error en la petición")
             }
         }
+        studentViewModel.studentModel.observe(this, Observer {currentState->
+            Log.i("Estudiante añadido","Se ha añadido a un estudiante $currentState")
 
+        })
         setContent {
             LinkMeQrTheme {
-                NavigationWrapper()
+                NavigationWrapper(studentViewModel)
             }
         }
     }

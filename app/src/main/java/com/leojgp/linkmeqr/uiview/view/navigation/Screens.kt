@@ -1,4 +1,4 @@
-package com.leojgp.linkmeqr.core.navigation
+package com.leojgp.linkmeqr.uiview.view.navigation
 
 import kotlinx.serialization.Serializable
 
@@ -8,6 +8,9 @@ object Login
 
 @Serializable
 object Home
+
+@Serializable
+data class Info(val students:MutableList<String>)
 
 @Serializable
 object SignUp

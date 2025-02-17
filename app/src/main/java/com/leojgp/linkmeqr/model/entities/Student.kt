@@ -1,4 +1,4 @@
-package com.leojgp.linkmeqr.entities
+package com.leojgp.linkmeqr.model.entities
 
 import kotlinx.serialization.Serializable
 

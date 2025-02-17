@@ -58,6 +58,14 @@ dependencies {
     implementation("io.ktor:ktor-client-json:2.3.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    //View Model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    //LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    //Fragment
+    implementation("android.fragment:fragment-ktx:1.3.2")
+    // Activity
+    implementation("android.activity:activity-ktx:1.2.2")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
