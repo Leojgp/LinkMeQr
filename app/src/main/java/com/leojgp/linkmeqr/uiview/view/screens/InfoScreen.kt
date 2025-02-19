@@ -10,36 +10,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import com.leojgp.linkmeqr.uiview.viewmodel.StudentViewModel
 
 @Composable
-fun InfoScreen(students: List<String>) {
+fun InfoScreen(viewModel: StudentViewModel) {
+    val student by viewModel.studentModel.observeAsState()
+    // Hago que la llamada se haga solo una vez
+    LaunchedEffect(Unit) {
+        viewModel.getStudent()
+    }
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.weight(1f))
         Text(text = "INFO SCREEN", fontSize = 25.sp)
         Spacer(modifier = Modifier.weight(1f))
-
-        Button(onClick = {}) {
-            Text("Añadir Estudiante")
-        }
-
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            items(students) { nombre ->
-                Text(
-                    text = nombre,
-                    fontSize = 20.sp,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.weight(1f))
-
-        Text("Estudiantes: ${students.joinToString(", ")}")
-
+        Text(text = student?.toString() ?: "Loading...")
         Spacer(modifier = Modifier.weight(1f))
     }
 }

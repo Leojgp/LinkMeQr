@@ -23,16 +23,14 @@ fun NavigationWrapper(studentViewModel: StudentViewModel) {
                 SignUp
             )})
         }
-        val pruebaStudents: List<String> = listOf("Pepe","Paco","Leo","Pablo")
         composable<Login> {
-            LoginScreen(navigateToInfo = {navController.navigate(Info(students = pruebaStudents))},viewModel = studentViewModel)
+            LoginScreen(navigateToInfo = {navController.navigate(Info)},viewModel = studentViewModel)
         }
         composable<SignUp> {
             SignUpScreen()
         }
-        composable<Info>{ backStackEntry ->
-            val info: Info = backStackEntry.toRoute()
-            InfoScreen(info.students)
+        composable<Info>{
+            InfoScreen(viewModel = studentViewModel)
         }
 
     }
