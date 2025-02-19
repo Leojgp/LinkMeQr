@@ -20,12 +20,12 @@ fun LoginScreen(navigateToInfo:() -> Unit,viewModel: StudentViewModel){
         Spacer(modifier = Modifier.weight(1f))
         Text(text = "LOGIN SCREEN", fontSize = 25.sp)
         Spacer(modifier = Modifier.weight(1f))
-        Text(text = student ?: "Loading....")
+        Text(text = student.toString() ?: "Loading....")
         Spacer(modifier = Modifier.weight(1f))
         Button(onClick = { navigateToInfo()}){
             Text("Navigate to Info")
         }
-        Button(onClick = {viewModel.updateStudent("Se ha cambiado el valor")}) {
+        Button(onClick = {viewModel.getStudent("Fran01")}) {
             Text("Pulse")
         }
         Spacer(modifier = Modifier.weight(1f))
