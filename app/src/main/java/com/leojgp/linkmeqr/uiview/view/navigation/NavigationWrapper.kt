@@ -8,7 +8,7 @@ import androidx.navigation.toRoute
 import com.leojgp.linkmeqr.uiview.view.screens.HomeScreen
 import com.leojgp.linkmeqr.uiview.view.screens.InfoScreen
 import com.leojgp.linkmeqr.uiview.view.screens.LoginScreen
-import com.leojgp.linkmeqr.uiview.view.screens.SingUpScreen
+import com.leojgp.linkmeqr.uiview.view.screens.SignUpScreen
 import com.leojgp.linkmeqr.uiview.viewmodel.StudentViewModel
 
 @Composable
@@ -23,16 +23,16 @@ fun NavigationWrapper(studentViewModel: StudentViewModel) {
                 SignUp
             )})
         }
+        val pruebaStudents: List<String> = listOf("Pepe","Paco","Leo","Pablo")
         composable<Login> {
-            LoginScreen{navController.navigate(Info(studentViewModel.studentModel)) }
+            LoginScreen(navigateToInfo = {navController.navigate(Info(students = pruebaStudents))},viewModel = studentViewModel)
         }
         composable<SignUp> {
-            SingUpScreen()
+            SignUpScreen()
         }
         composable<Info>{ backStackEntry ->
             val info: Info = backStackEntry.toRoute()
-
-            InfoScreen()
+            InfoScreen(info.students)
         }
 
     }

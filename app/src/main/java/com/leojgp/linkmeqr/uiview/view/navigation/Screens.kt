@@ -10,7 +10,7 @@ object Login
 object Home
 
 @Serializable
-data class Info(val students:MutableList<String>)
+data class Info(val students:List<String>)
 
 @Serializable
 object SignUp

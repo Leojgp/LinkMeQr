@@ -33,13 +33,9 @@ class MainActivity : ComponentActivity() {
                 println("Ha ocurrido un error en la petición")
             }
         }
-        studentViewModel.studentModel.observe(this, Observer {currentState->
-            Log.i("Estudiante añadido","Se ha añadido a un estudiante $currentState")
-
-        })
         setContent {
             LinkMeQrTheme {
-                NavigationWrapper(studentViewModel)
+                NavigationWrapper(studentViewModel = studentViewModel)
             }
         }
     }

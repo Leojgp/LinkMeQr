@@ -16,6 +16,9 @@ fun HomeScreen(navigateToLogin:() -> Unit, navigateToSignUp:() -> Unit, ){
         Spacer(modifier = Modifier.weight(1f))
         Text(text = "HOME SCREEN", fontSize = 25.sp)
         Spacer(modifier = Modifier.weight(1f))
+        Button(onClick = { navigateToLogin() }){
+            Text(text= "Iniciar Sesión")
+        }
         Button(onClick = { navigateToSignUp() }){
             Text(text= "Registrarse")
         }

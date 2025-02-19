@@ -62,10 +62,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
     //LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
-    //Fragment
-    implementation("android.fragment:fragment-ktx:1.3.2")
-    // Activity
-    implementation("android.activity:activity-ktx:1.2.2")
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

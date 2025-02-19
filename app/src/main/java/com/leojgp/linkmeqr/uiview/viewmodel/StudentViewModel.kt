@@ -1,12 +1,14 @@
 package com.leojgp.linkmeqr.uiview.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class StudentViewModel : ViewModel(){
-    val studentModel = MutableLiveData<String>()
+    private val _studentModel = MutableLiveData<String>("Hola esto es una prueba")
+    val studentModel: LiveData<String> = _studentModel
 
     fun updateStudent(addStudent:String){
-        studentModel.postValue(addStudent)
+        _studentModel.postValue(addStudent)
     }
 }
