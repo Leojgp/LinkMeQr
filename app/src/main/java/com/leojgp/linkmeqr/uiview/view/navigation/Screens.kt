@@ -14,3 +14,6 @@ object Info
 
 @Serializable
 object SignUp
+
+@Serializable
+object Stats

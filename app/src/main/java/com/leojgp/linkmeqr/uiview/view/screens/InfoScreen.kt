@@ -2,6 +2,7 @@ package com.leojgp.linkmeqr.uiview.view.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -14,7 +15,7 @@ import androidx.compose.ui.unit.sp
 import com.leojgp.linkmeqr.uiview.viewmodel.StudentViewModel
 
 @Composable
-fun InfoScreen(viewModel: StudentViewModel) {
+fun InfoScreen(viewModel: StudentViewModel, navigateToStats: () -> Unit) {
     val student by viewModel.studentModel.observeAsState()
 
     LaunchedEffect(Unit) {
@@ -41,6 +42,14 @@ fun InfoScreen(viewModel: StudentViewModel) {
                     Text(text = "Usa Bus: ${if (data.usaBus) "Sí" else "No"}", fontSize = 18.sp, modifier = Modifier.padding(8.dp))
                 }
             }
+
+            Button(onClick = {
+                viewModel.sendStudentDataToWebSocket(data.user, data.nombre, data.grado, data.ciudad)
+                navigateToStats()
+            }) {
+                Text("Ver Estadísticas")
+            }
+
         } ?: Text(text = "Loading...")
 
         Spacer(modifier = Modifier.weight(1f))

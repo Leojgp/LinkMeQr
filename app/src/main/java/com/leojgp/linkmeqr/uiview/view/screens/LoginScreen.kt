@@ -3,6 +3,7 @@ package com.leojgp.linkmeqr.uiview.view.screens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -18,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.leojgp.linkmeqr.uiview.viewmodel.StudentViewModel
 
 @Composable
-fun LoginScreen(navigateToInfo:() -> Unit,viewModel: StudentViewModel){
+fun LoginScreen(navigateToInfo: () -> Unit, viewModel: StudentViewModel) {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(modifier = Modifier.weight(1f))
@@ -26,17 +27,14 @@ fun LoginScreen(navigateToInfo:() -> Unit,viewModel: StudentViewModel){
         Spacer(modifier = Modifier.weight(1f))
         TextField(
             value = text,
-            onValueChange = { newText ->
-                text = newText
-            }
+            onValueChange = { newText -> text = newText }
         )
         Button(onClick = {
             navigateToInfo()
             viewModel.changeUserName(text.text)
-        }){
+        }) {
             Text("Submit")
         }
         Spacer(modifier = Modifier.weight(1f))
     }
-
 }
