@@ -9,7 +9,7 @@ LinkMeQR es una aplicación móvil que permite a los estudiantes registrarse, pr
   - Las estadísticas se muestran en un gráfico de barras, donde cada barra representa una ciudad y su respectiva cantidad de estudiantes.
 
 - **Conexión en Tiempo Real:**
-  - La aplicación usa **WebSockets** para mantener una conexión constante con el servidor.
+  - La aplicación usa **WebSockets** para mantener una conexión constante con el servidor (El servidor websocket está en rama main).
   - Los datos de las ciudades se actualizan en tiempo real a medida que los estudiantes se registran.
 
 - **Visualización Interactiva:**
